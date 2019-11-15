@@ -1,0 +1,18 @@
+{
+  "name": "api-client-javascript",
+  "version": "0.0.1",
+  "main": "src/ApiClient.js",
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {
+    "chai": "^4.2.0",
+    "moment": "^2.24.0",
+    "node-rsa": "^1.0.6"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moneymour/api-client-javascript"
+  }
+}
