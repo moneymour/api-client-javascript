@@ -68,6 +68,14 @@ class ApiClient {
       return API_DEVELOPMENT_BASE_URL
     }
   }
+
+  static get SignatureFactory () {
+    return SignatureFactory
+  }
+
+  static get environments () {
+    return environments
+  }
 }
 
 module.exports = ApiClient
