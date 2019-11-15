@@ -1,17 +1,23 @@
 {
   "name": "api-client-javascript",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Javascript library for offering easy access to Moneymour APIs",
   "main": "src/ApiClient.js",
+  "author": "Antonio Trapani <antonio.trapani@gmail.com> (https://about.me/antonio.trapani)",
+  "keywords": ["moneymour", "payment", "payments", "payment method", "loans", "loan", "e-commerce"],
+  "license": "Apache-2.0",
+  "homepage": "https://moneymour.com",
   "engines": {
     "node": ">=8"
   },
   "dependencies": {
     "axios": "^0.19.0",
-    "chai": "^4.2.0",
     "moment": "^2.24.0",
     "node-rsa": "^1.0.6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^4.2.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/moneymour/api-client-javascript"
