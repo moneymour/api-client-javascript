@@ -56,7 +56,7 @@ const payload = {
   console.log(response)  
 })()
 
-`
+/*
 {
     "status": "accepted",
     "amount": 1080,
@@ -79,7 +79,7 @@ const payload = {
         }
     ]
 }
-`
+*/
 ```
 
 ## Gotchas
