@@ -1,7 +1,7 @@
 {
-  "name": "api-client-javascript",
+  "name": "moneymour-api-client",
   "version": "1.0.0",
-  "description": "Javascript library for offering easy access to Moneymour APIs",
+  "description": "Library offering easy access to Moneymour APIs",
   "main": "src/ApiClient.js",
   "author": "Antonio Trapani <antonio.trapani@gmail.com> (https://about.me/antonio.trapani)",
   "keywords": ["moneymour", "payment", "payments", "payment method", "loans", "loan", "e-commerce"],
