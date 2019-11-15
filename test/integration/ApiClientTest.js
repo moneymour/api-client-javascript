@@ -1,8 +1,7 @@
 const chai = require('chai')
 const expect = chai.expect
-const NodeRSA = require('node-rsa')
 
-const SignatureFactory = require('../../src/SignatureFactory')
+const ApiClient = require('../../src/ApiClient')
 
 const TEST_PRIVATE_KEY = `-----BEGIN RSA PRIVATE KEY-----
 MIIEowIBAAKCAQEAvT3czEWmcTH6ITffOJFvvKdsS6iv1A3+OnhmOeZKbdLD+OWe
@@ -32,35 +31,23 @@ XxEV1nAnFB3KMGgaKQPtNYWN6GRqI0iYQetDJI1bD/GR082l0kX+a4k1LwqazW5G
 BV1aiWzsnSB2aNFSZKVPUWFmqtyxxb8d75yyp4wRdjjHiezZcuKk
 -----END RSA PRIVATE KEY-----`
 
-describe('SignatureFactory', () => {
-  it('test signature', async () => {
-    const factory = new SignatureFactory()
-    const signature = factory.build(TEST_PRIVATE_KEY, 1572281748, 'body')
-    expect(signature).to.equal('SfjAYr56Nc6maLSALCdLDxb6X9sPMQ3RBRRzPqEEfsEtpkUTDchE8svBn4ZlWvPRjySZ+lopAuJfoEDMUdmrxVGCXG/tD0DGe1efakDyyVVQPnciuahZtAwVqaz2G/ws8LXCfTkdc/D3Fa/Ts+y+CILcbpbujKXH28BGiQtp/qB4tnvbNVTLKjg2U85Cxx70Oe6A7GPB87vfZx61smYPBq27o+uLYPQ8rnxBdqkgMZH5oZ1NwN0yHDeXGpgt+PljKKFpWTLm1umFidETkM2B8o4HfgvL+gNyjEvUwnCOqjKqHTjqZYKFE1sJVZSdTagBOP7W5p4XoOSebBhBh/YYlA==')
-  })
+describe('ApiClient', () => {
+  it('test request', async () => {
+    const merchantId = '287cefd4-d0e5-45d7-a853-35b9426996ca'
+    const merchantSecret = 'C9el8k3brQ7S4BUG6faJXmRwVSxWKlBxGmiRBEwZfSE6VHwDRIMgJddqS1iFzxnk'
 
-  it('test verification', async () => {
-    const factory = new SignatureFactory()
+    const client = new ApiClient(merchantId, merchantSecret)
 
-    const body = {
+    const res = await client.request(TEST_PRIVATE_KEY, {
       'phoneNumber': '+39' + parseInt((Math.random() * (9999999999 - 1000000000) + 1000000000).toString()),
       'orderId': '12345678',
       'amount': 500,
-      'products': [
-        {
-          'name': 'GoPro Hero7 É',
-          'amount': 500
-        }
-      ]
-    }
+      'products': [{
+        'name': 'GoPro Hero7 É',
+        'amount': 500
+      }]
+    })
 
-    const key = new NodeRSA({ b: 512, signingScheme: 'sha256' })
-    const privateKey = key.exportKey()
-    const publicKey = key.exportKey('pkcs1-public-pem')
-
-    const expiresAt = factory.generateExpiresAtHeaderValue()
-    const signature = factory.build(privateKey, expiresAt, body)
-
-    expect(factory.verify(signature, expiresAt, body, publicKey)).to.be.true
+    expect(res.status).to.equal('accepted')
   })
 })
