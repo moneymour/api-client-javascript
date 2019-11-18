@@ -1,6 +1,6 @@
 {
   "name": "moneymour-api-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Library offering easy access to Moneymour APIs",
   "main": "src/ApiClient.js",
   "author": "Antonio Trapani <antonio.trapani@gmail.com> (https://about.me/antonio.trapani)",
